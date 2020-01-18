@@ -64,7 +64,7 @@ public class StudentController {
 	@Transactional
 	@RequestMapping(value = "/activateStudent", method = RequestMethod.GET)
 	public String activateStudent( @RequestParam("stud_id") int stud_id) {
-		//Get student id via GET from jsp
+	
 		Student s = studentDAO.getStudent(stud_id);
 		s.setActivated(true); 
 		studentDAO.saveStudent(s); 
@@ -79,10 +79,12 @@ public class StudentController {
 	public String approveApplication( Model model) {
 		List<Application> unapprovedApps = applicationDAO.getUnapprovedApplications();
 		
-		//TODO:Svista auta prin mou steileis ta arxeia kai genika ola ta TODO kolopaido
-//		System.out.println("Stoixeia Application tou Student" +unapprovedApps.get(0).getApplicationForm().getAnnualIncome());
-//		System.out.println("Dimiourgi8ike apton " +unapprovedApps.get(0).getCreatedBy().getUsername());
-		
+		for(Application a: unapprovedApps) {
+			a.getCreatedBy();
+			a.getCreationDate();
+			a.getApplicationForm();
+		}
+
 		model.addAttribute("applications", unapprovedApps);
 		return "finaletoEmpAppr";
 	}
@@ -91,8 +93,7 @@ public class StudentController {
 	@RequestMapping(value = "/approveStudentApplication", method = RequestMethod.GET)
 	public String approveStudentApplication( @RequestParam("app_id") int app_id) {
 		
-		//TODO: Vale app_id sto getApplication, se ypotazw
-		Application a = applicationDAO.getApplication(2); //app_id
+		Application a = applicationDAO.getApplication(app_id);
 		applicationDAO.approveApplication(a);
 
 		return "redirect:/student/lapprove";

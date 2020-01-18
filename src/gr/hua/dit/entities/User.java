@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,6 +31,9 @@ public class User { // implements UserDetails
 
 	@Column(name = "password", nullable = false)
 	private String password;
+	
+	@Column(name="phone")
+	private String phone;
 
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
@@ -41,6 +46,7 @@ public class User { // implements UserDetails
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 //	private List<Authorities> authorities;
 
+	@JsonIgnore
 	@ManyToMany
     @JoinTable( 
         name = "users_roles", 
@@ -108,6 +114,15 @@ public class User { // implements UserDetails
 
 	public void setAuthorities(List<Authorities> authorities) {
 		this.authorities = authorities;
+	}
+	
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	@Override

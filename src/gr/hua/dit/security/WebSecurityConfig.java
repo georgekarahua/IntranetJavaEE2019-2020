@@ -36,30 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/loginAction").permitAll().and().logout().logoutSuccessUrl("/login").permitAll()
 				.and().csrf().disable();
 	}
-//
-//	 	@Override
-//	    protected void configure(HttpSecurity http) throws Exception {
-//	        http.authorizeRequests()
-//	        .antMatchers("/login")
-//	            .permitAll()
-//	        .antMatchers("/**")
-//	            .hasAnyRole("ROLE_ADMIN", "ROLE_EMP", "ROLE_CHIEF")
-//	        .and()
-//	            .formLogin()
-//	            .loginPage("/login")
-//	            .defaultSuccessUrl("/home")
-//	            .failureUrl("/login?error=true")
-//	            .permitAll()
-//	        .and()
-//	            .logout()
-//	            .logoutSuccessUrl("/login?logout=true")
-//	            .invalidateHttpSession(true)
-//	            .permitAll()
-//	        .and()
-//	            .csrf()
-//	            .disable();
-//	    }
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**");

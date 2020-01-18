@@ -6,6 +6,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Student extends User {
 	@OneToOne(mappedBy = "createdBy", cascade = CascadeType.ALL)
 	private Application application;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne( cascade = CascadeType.ALL)
 	@JoinColumn(name = "dept_id")
 	private Department department;
 

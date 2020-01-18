@@ -8,7 +8,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Students Activation</title>
 <style type="text/css">
 .error {
@@ -27,7 +26,7 @@
 }
 
 #students tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: #6869bd;
 }
 
 #students tr:hover {
@@ -60,7 +59,63 @@ h3 {
 }
 
 h2 {
+	color:white;
 	text-align: center;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #bee2f9;
+	background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+	background-color:#63b8ee;
+	border-radius:6px;
+	border:1px solid #3866a3;
+	display:inline-block;
+	cursor:pointer;
+	color:#14396a;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #7cacde;
+	margin-top:15px;
+	margin-left:44%;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+	background-color:#468ccf;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton1 {
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	background-color:#77d42a;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aade7c;
+}
+.myButton1:hover {
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	background-color:#5cb811;
+}
+.myButton1:active {
+	position:relative;
+	top:1px;
+}
+td{
+	text-align:center;
 }
 </style>
 </head>
@@ -71,25 +126,24 @@ h2 {
 		<thead>
 			<tr>
 				<th><strong>ID</strong></th>
+				<th><strong>IT</strong></th>
 				<th><strong>First Name</strong></th>
 				<th><strong>Last Name</strong></th>
 				<th><strong>Department</strong></th>
-				<th><strong>Click to Activate</strong>
+				<th><strong>Click to Activate</strong><th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<!-- TODO: Loipon, auto to varStatus="status" einai kati typopoihmeno twn jsp to opoio mas epitrepei na paroume to index tou pinaka -->
 				<c:forEach items="${students}" var="user" varStatus="status">
 					<tr>
 						<td class="studentIdbae">${user.id}</td>
+						<td >${user.username}</td>
 						<td>${user.firstName}</td>
 						<td>${user.lastName}</td>
 						<td>${user.department.name}</td>
-						<td>${students[status.index].id}</td>
-						<td>
-							<!-- TODO: href apo katw to <[status.index]> einai to index tou pinaka pou kaneis forEach -->
-							<a
+						<td style="text-align:center;">
+							<a class="myButton1"
 							href="<c:url value='/student/activateStudent?stud_id=${students[status.index].id}' />">Activate</a>
 						</td>
 					</tr>
@@ -97,8 +151,7 @@ h2 {
 			</tr>
 		</tbody>
 	</table>
-	<button id="elapame" type="button">ACTIVATE</button>
-	<button id="pamepisw" type="button">GO BACK</button>
+	<a class="myButton" href="<c:url value="/" />">GO BACK</a>
 
 </body>
 </html>

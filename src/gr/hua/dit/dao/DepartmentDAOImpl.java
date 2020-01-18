@@ -74,7 +74,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	public void updateDepartmentsBeneficiaries() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		List<Department> deps = getDepartments();
-		System.out.println("DEPARTMENTS CHIEF UPDATING GAMW");
+		
 		for(Department dep : deps) {
 			System.out.println(dep.getName() + " " + dep.getTotalStudents());
 			int beneficiaries = (int)Math.round((dep.getTotalStudents()*80)/100);

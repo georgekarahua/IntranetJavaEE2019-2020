@@ -31,14 +31,6 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDao;
 
-	//Testing
-//	@Autowired
-//	private StudentDAO studentDAO;
-//	@Autowired
-//	private ApplicationDAO applicationDAO;
-//	@Autowired
-//	private DepartmentDAO departmentDAO;
-	////
 	@GetMapping("/")
 	@Transactional
 	public String index(Model model, Principal principal) {
@@ -47,26 +39,6 @@ public class LoginController {
 	
 		String role = user.getAuthorities().get(0).getAuthority();
 		System.out.println(role);
-		/////////////////////////////////////////////////////////////////////
-		//TESTING
-		//getUnactiveStudentsOfDepartement
-//		List<Student> students = studentDAO.getUnactiveStudentsOfDepartement(1);
-//		for (Student s : students) {
-//			System.out.println(s.getFirstName() + " " + s.getLastName());
-//		}
-//		//getUnapprovedApplications
-//		List<Application> apps = applicationDAO.getUnapprovedApplications();
-//		for (Application a : apps) {
-//			System.out.println("<Application> CreatedBy: " + a.getCreatedBy().getUsername() + " with form:" + a.getApplicationForm());
-//		}
-//		
-		//approveApplication
-//		applicationDAO.approveApplication(apps.get(0));
-		
-		//updateBeneficiariesOfDepartment
-//		departmentDAO.updateDepartmentsBeneficiaries();
-		//TESSSSTIIING
-///////////////////////////////////////////////////////////////////
 		
 		
 		model.addAttribute("welcomemessage", "Welcome " + user.getFirstName() + " " + user.getLastName());
